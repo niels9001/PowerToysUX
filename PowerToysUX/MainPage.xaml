@@ -52,7 +52,6 @@
                                     <Setter Property="Background" Value="Red"/>
                                 </Style>
                             </Flyout.FlyoutPresenterStyle>
-                        
                             <TextBlock Text="3" />
                          
                         </Flyout>
