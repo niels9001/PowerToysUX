@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="PowerToysUX.Views.Settings.PowerRename"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PowerToysUX.Views.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" Margin="14,0,14,0" Spacing="14">
+                <TextBlock Text="A Windows Shell Extension for more advanced bulk renaming using search and replace or regular expressions." Style="{StaticResource BodyTextBlockStyle}"/>
+                <HyperlinkButton x:Name="OverviewBtn" Content="Overview" Margin="0,-14,0,0" />
+                <TextBlock Text="Shell integration" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
+                <ToggleSwitch Header="Show on default context menu" IsOn="True" />
+                <ToggleSwitch Header="Only show on extended context menu (Shift + Right-click)" IsOn="False" />
+                <TextBlock Text="Miscellaneous" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
+                <ToggleSwitch Header="Enable autocomplete and autosuggest of recently used inputs for search and replace values" IsOn="True" />
+
+                <ToggleSwitch Header="Restore search, replace and flags values on launch from previous run" IsOn="True" />
+
+                <muxc:NumberBox Value="10" SpinButtonPlacementMode="Compact" Header="Maximum numbers of items to show in recently used list"  HorizontalAlignment="Left"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

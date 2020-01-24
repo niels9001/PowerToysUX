@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="PowerToysUX.Views.Settings.Shortcuts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PowerToysUX.Views.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" Margin="14,0,14,0" Spacing="14">
+                <TextBlock Text="Shows a help overlay with Windows shortcuts when the Windows key is pressed." Style="{StaticResource BodyTextBlockStyle}"/>
+                <HyperlinkButton x:Name="OverviewBtn" Content="Overview" Margin="0,-14,0,0" />
+
+                <muxc:NumberBox Value="900" SpinButtonPlacementMode="Compact" Header="How long to press the Windows key before showing the Shortcut Guide"  HorizontalAlignment="Left" Margin="0,14,0,0"/>
+                <muxc:NumberBox Value="90" SpinButtonPlacementMode="Compact" Header="Opacity of the Shortcut Guide's overlay background (%)" HorizontalAlignment="Left" Margin="0,14,0,0"/>
+                <muxc:RadioButtons Header="Shortcut Guide overlay color" Margin="0,14,0,0">
+                    <RadioButton Content="Dark"/>
+                    <RadioButton Content="Light"/>
+                    <RadioButton Content="System default" IsChecked="True"/>
+                </muxc:RadioButtons>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
