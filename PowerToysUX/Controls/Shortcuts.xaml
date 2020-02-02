@@ -6,23 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ToolkitControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <ThemeShadow x:Name="ShellBarShadow"/>
+        <ThemeShadow x:Name="ButtonShadow"/>
+  
     </UserControl.Resources>
     <Grid>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <Rectangle HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Height="144" Fill="{StaticResource BackdropAcrylicBrush}" VerticalAlignment="Top" />
-        <GridView x:Name="ShortcutsView" VerticalAlignment="Center" Grid.Column="1">
+        <Grid x:Name="ShadowReceiverGrid" />
+        <GridView x:Name="ShortcutsView" VerticalAlignment="Center" Margin="48,96,0,0" Grid.Column="1">
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation Duration="0:0:0.350" From="0, 60, 0" To="0" />
+                <animations:OpacityAnimation Duration="0:0:0.350" From="0" To="1.0"/>
+            </animations:Implicit.ShowAnimations>
+            <animations:Implicit.HideAnimations>
+                <animations:TranslationAnimation Duration="0:0:0.350" To="0, 20, 0" From="0" />
+                <animations:OpacityAnimation Duration="0:0:0.350" To="0" From="1.0"/>
+            </animations:Implicit.HideAnimations>
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
-                    <Setter Property="Margin" Value="12, 6, 12, 6"/>
-           
+                    <Setter Property="Margin" Value="24, 6, 24, 6"/>
                 </Style>
             </GridView.ItemContainerStyle>
 
@@ -35,13 +44,13 @@
                                OffsetX="0"
                                OffsetY="0"
                                Color="Black">
-                            <Border CornerRadius="4" Background="{StaticResource BackdropAcrylicBrush}" >
-                                <TextBlock Text="{x:Bind Character}" Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border CornerRadius="4" Background="{ThemeResource KeyboardShortcutAcrylicBrush}">
+                                <TextBlock Text="{x:Bind Character}" Foreground="{ThemeResource PrimaryTextColor}"  FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ToolkitControls:DropShadowPanel>
-                  
 
-                            <TextBlock Text="{x:Bind Title}" VerticalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}"/>
+
+                        <TextBlock Text="{x:Bind Title}" VerticalAlignment="Center" Foreground="White"  Opacity="0.7" Style="{StaticResource BaseTextBlockStyle}"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -53,5 +62,86 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
+        <Grid Margin="0,208,0,0">
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation Duration="0:0:0.350" From="0, 60, 0" To="0" />
+                <animations:OpacityAnimation Duration="0:0:0.350" From="0" To="1.0"/>
+            </animations:Implicit.ShowAnimations>
+            <animations:Implicit.HideAnimations>
+                <animations:TranslationAnimation Duration="0:0:0.350" To="0, 20, 0" From="0" />
+                <animations:OpacityAnimation Duration="0:0:0.350" To="0" From="1.0"/>
+            </animations:Implicit.HideAnimations>
+            <Grid Width="500" Height="320" VerticalAlignment="Center" ColumnSpacing="12" RowSpacing="12">
+               
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="56"/>
+                <ColumnDefinition Width="56"/>
+                <ColumnDefinition Width="56"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="56"/>
+                <RowDefinition Height="56"/>
+                <RowDefinition Height="56"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+                <TextBlock Text="Snap left" VerticalAlignment="Center" Opacity="0.7" Foreground="White"  Style="{StaticResource BaseTextBlockStyle}" Grid.Row="2" HorizontalAlignment="Right"/>
+                <TextBlock Text="Snap right" VerticalAlignment="Center" Opacity="0.7" Foreground="White"  Style="{StaticResource BaseTextBlockStyle}" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left"/>
+                <TextBlock Text="Restore" Opacity="0.7" Style="{StaticResource BaseTextBlockStyle}" Foreground="White"  Grid.Row="4" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBlock Text="Fullscreen" VerticalAlignment="Bottom" Opacity="0.7" Style="{StaticResource BaseTextBlockStyle}" Foreground="White"  Grid.ColumnSpan="5" HorizontalAlignment="Center"/>
+
+                <Border CornerRadius="4" Grid.Column="1" Grid.Row="2" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16" Background="{ThemeResource KeyboardShortcutAcrylicBrush}">
+                    <TextBlock Text="&#xF0B0;" FontFamily="Segoe MDL2 Assets" Foreground="{ThemeResource PrimaryTextColor}"  FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+                <Border CornerRadius="4" Grid.Column="2" Grid.Row="1" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16" Background="{ThemeResource KeyboardShortcutAcrylicBrush}">
+                    <TextBlock Text="&#xF0AD;" FontFamily="Segoe MDL2 Assets" Foreground="{ThemeResource PrimaryTextColor}"  FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+                <Border CornerRadius="4" Grid.Column="3" Grid.Row="2" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16" Background="{ThemeResource KeyboardShortcutAcrylicBrush}">
+                    <TextBlock Text="&#xF0AF;" FontFamily="Segoe MDL2 Assets" Foreground="{ThemeResource PrimaryTextColor}"  FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+                <Border CornerRadius="4" Grid.Column="2" Grid.Row="3" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16" Background="{ThemeResource KeyboardShortcutAcrylicBrush}">
+                    <TextBlock Text="&#xF0AE;" FontFamily="Segoe MDL2 Assets" Foreground="{ThemeResource PrimaryTextColor}"  FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+
+            
+            <!-- Color shortcuts for taskbar apps -->
+        <Border CornerRadius="4" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="152,0,0,8" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16">
+            <Border.Background>
+                <AcrylicBrush BackgroundSource="Backdrop" TintColor="#FF404cd3" TintOpacity="0.9" FallbackColor="#FF0c4aa4"/>
+            </Border.Background>
+            <TextBlock Text="1" Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <Border CornerRadius="4" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="200,0,0,8" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16">
+            <Border.Background>
+                <AcrylicBrush BackgroundSource="Backdrop" TintColor="#FFf6ae00" TintOpacity="0.9" FallbackColor="#FF0c4aa4"/>
+            </Border.Background>
+            <TextBlock Text="2" Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+
+
+        <Border CornerRadius="4" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="248,0,0,8" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16">
+            <Border.Background>
+                <AcrylicBrush BackgroundSource="Backdrop" TintColor="#FF0c4aa4" TintOpacity="0.9" FallbackColor="#FF0c4aa4"/>
+            </Border.Background>
+            <TextBlock Text="3" Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+            <Border CornerRadius="4" VerticalAlignment="Top" Width="360" Shadow="{StaticResource ButtonShadow}" Translation="0,0,16" >
+                <animations:Implicit.ShowAnimations>
+                    <animations:TranslationAnimation Duration="0:0:0.450" From="0, 60, 0" To="0" />
+                    <animations:OpacityAnimation Duration="0:0:0.450" From="0" To="1.0"/>
+                </animations:Implicit.ShowAnimations>
+                <animations:Implicit.HideAnimations>
+                    <animations:TranslationAnimation Duration="0:0:0.450" To="0, 20, 0" From="0" />
+                    <animations:OpacityAnimation Duration="0:0:0.450" To="0" From="1.0"/>
+                </animations:Implicit.HideAnimations>
+                <Image Source="/Assets/Images/Wallpaper.jpg" VerticalAlignment="Top"   />
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

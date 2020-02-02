@@ -11,7 +11,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel Orientation="Vertical" Margin="14,0,14,0" Spacing="14">
+            <StackPanel Orientation="Vertical" Margin="14,0,14,48" Spacing="14">
                 <TextBlock Text="A Windows Shell Extension for more advanced bulk renaming using search and replace or regular expressions." Style="{StaticResource BodyTextBlockStyle}"/>
                 <HyperlinkButton x:Name="OverviewBtn" Content="Overview" Margin="0,-14,0,0" />
                 <TextBlock Text="Shell integration" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>

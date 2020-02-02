@@ -25,29 +25,30 @@
     ExpandedModeThresholdWidth="500"
     SelectionFollowsFocus="Disabled"
     IsTabStop="False">
+         
 
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="General" Tag="General" x:Name="SamplePage1Item">
+                <muxc:NavigationViewItem Content="General" Tag="General">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE713;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="FancyZones" Tag="FancyZones" x:Name="SamplePage2Item" SelectsOnInvoked="True">
+                <muxc:NavigationViewItem Content="FancyZones" Tag="FancyZones">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xED35;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Power Rename" Tag="PowerRename" SelectsOnInvoked="True">
+                <muxc:NavigationViewItem Content="Power Rename" Tag="PowerRename">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE8AC;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Shortcuts Guide" Tag="Shortcuts" x:Name="SamplePage3Item">
+                <muxc:NavigationViewItem Content="Shortcuts Guide" Tag="Shortcuts">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEDA7;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Power Launcher" Tag="PowerLauncher" SelectsOnInvoked="True">
+                <muxc:NavigationViewItem Content="Power Launcher" Tag="PowerLauncher">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE8A7;"/>
                     </muxc:NavigationViewItem.Icon>

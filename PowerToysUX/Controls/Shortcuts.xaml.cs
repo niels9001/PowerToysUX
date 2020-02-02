@@ -26,7 +26,7 @@ namespace PowerToysUX.Controls
         public Shortcuts()
         {
             this.InitializeComponent();
-
+            ButtonShadow.Receivers.Add(ShadowReceiverGrid);
 
             ShortcutsList = new List<Shortcut>
             {

@@ -12,7 +12,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel Orientation="Vertical" Margin="14,0,14,0" Spacing="14">
+            <StackPanel Orientation="Vertical" Margin="14,0,14,48" Spacing="14">
 
                 <TextBlock Text="Available PowerToys" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
                 <TextBlock Text="FancyZones" Style="{StaticResource BaseTextBlockStyle}" />
@@ -30,8 +30,12 @@
                     <RadioButton Content="System default" IsChecked="True"/>
                 </muxc:RadioButtons>
 
-                <TextBlock FontWeight="Bold" Text="Version 0.14.0" Margin="0,14,0,0" />
+                <TextBlock Text="About PowerToys" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
+                <TextBlock FontWeight="Bold" Text="Version 0.14.1.0" Margin="0,0,0,0" />
                 <Button Background="{ThemeResource SystemAccentColor}" Content="Check for updates" Margin="0,-4,0,0" Foreground="White"/>
+                <HyperlinkButton Content="Report a bug" />
+                <HyperlinkButton Content="Request a feature" Margin="0,-14,0,0" />
+                <HyperlinkButton Content="Privacy statement" Margin="0,-14,0,0" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -16,6 +16,7 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <ThemeShadow x:Name="ShellBarShadow"/>
+  
     </UserControl.Resources>
     <Grid>
         <Grid x:Name="ShadowReceiverGrid"/>
@@ -23,22 +24,56 @@
             <StackPanel Orientation="Horizontal">
 
 
-                <muxc:SplitButton x:Name="ColorPicker" Height="48" Background="Transparent" Style="{ThemeResource SplitButtonRevealStyle}" Click="ColorPicker_Click" >
+                <muxc:SplitButton x:Name="ColorPicker"  Foreground="{ThemeResource PrimaryTextColor}" Height="48" Background="Transparent" Style="{ThemeResource SplitButtonRevealStyle}" Click="ColorPicker_Click" >
                     <muxc:SplitButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xEF3C;"/>
                         </muxc:SplitButton.Content>
+                    <ToolTipService.ToolTip>
+                        <TextBlock Text="Color Meter (Ctrl+C)"/>
+                    </ToolTipService.ToolTip>
                     <muxc:SplitButton.Flyout>
                         <Flyout Placement="Bottom">
-
+                            <Grid >
+                                <ListView x:Name="ColorList">
+                                    <ListView.Header>
+                                        <Grid ColumnSpacing="12" Margin="12,0,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="24"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                      
+                                            <TextBlock Text="Hex" FontWeight="SemiBold" Grid.Column="1"/>
+                                            <TextBlock Text="RGB" FontWeight="SemiBold" Grid.Column="2"/>
+                                        </Grid>
+                                    </ListView.Header>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="local:PowerColor">
+                                            <Grid ColumnSpacing="12" Margin="0,12,0,12">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="24"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Ellipse x:Name="ColorEllipse" Height="24" Width="24" Fill="{x:Bind Brush}"/>
+                                                <TextBox Text="{x:Bind Hex}" Grid.Column="1" MinWidth="120" GotFocus="TextBox_GotFocus"/>
+                                                <TextBox Text="{x:Bind RGB}" Grid.Column="2" MinWidth="120" GotFocus="TextBox_GotFocus"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                            
+                           
                         </Flyout>
                     </muxc:SplitButton.Flyout>
                 </muxc:SplitButton>
 
 
 
-                <Button Background="Transparent" Grid.Column="1" Width="48" Height="48" BorderThickness="1" Style="{ThemeResource ButtonRevealStyle}" >
+                <Button Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Grid.Column="1" Width="48" Height="48" BorderThickness="1" Style="{ThemeResource ButtonRevealStyle}" >
                     <ToolTipService.ToolTip>
-                        <TextBlock Text="Ctrl+M"/>
+                        <TextBlock Text="Tapeline (Ctrl+T)"/>
                     </ToolTipService.ToolTip>
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xECC6;"/>
@@ -47,7 +82,7 @@
 
                 <Button Background="Transparent" Grid.Column="1" Width="48" Height="48" BorderThickness="1" Style="{ThemeResource ButtonRevealStyle}" >
                     <ToolTipService.ToolTip>
-                        <TextBlock Text="Ctrl+M"/>
+                        <TextBlock Text="GIF Recorder (Ctrl+G)"/>
                     </ToolTipService.ToolTip>
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xF4A9;"/>
@@ -58,7 +93,7 @@
 
                 <Button x:Name="PowerLauncher" Background="Transparent" Grid.Column="1" Width="48" Height="48" BorderThickness="1" Style="{ThemeResource ButtonRevealStyle}" Click="PowerLauncher_Click" >
                     <ToolTipService.ToolTip>
-                        <TextBlock Text="Ctrl+M"/>
+                        <TextBlock Text="Power Launcher (Ctrl+P)"/>
                     </ToolTipService.ToolTip>
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xE8A7;"/>
@@ -66,7 +101,7 @@
                 </Button>
                 <Button x:Name="Shortcuts" Background="Transparent" Grid.Column="1" Width="48" Height="48" BorderThickness="1" Style="{ThemeResource ButtonRevealStyle}" Click="Shortcuts_Click" >
                     <ToolTipService.ToolTip>
-                        <TextBlock Text="Ctrl+M"/>
+                        <TextBlock Text="Shortcut Guide (Ctrl+S)"/>
                     </ToolTipService.ToolTip>
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xEDA7;"/>
@@ -74,7 +109,7 @@
                 </Button>
                 <Button x:Name="SettingsBtn" Background="Transparent" Grid.Column="1" Width="48" Height="48" BorderThickness="1" Style="{ThemeResource ButtonRevealStyle}" Click="SettingsBtn_Click" >
                     <ToolTipService.ToolTip>
-                        <TextBlock Text="Ctrl+M"/>
+                        <TextBlock Text="Settings (Ctrl+M)"/>
                     </ToolTipService.ToolTip>
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xE713;"/>

@@ -13,6 +13,7 @@
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="PrimaryTextColor" Color="Black"/>
                     <AcrylicBrush x:Key="BackdropAcrylicBrush" BackgroundSource="Backdrop" TintColor="White" TintOpacity="0.9" FallbackColor="White"/>
+                    <AcrylicBrush x:Key="KeyboardShortcutAcrylicBrush" BackgroundSource="Backdrop" TintColor="White" TintOpacity="0.9" FallbackColor="White"/>
                     <SolidColorBrush x:Key="ItemBackgroundColor" Color="#FFFFFFFF"/>
                     <Color x:Key="DropShadowColor">#FF979797</Color>
                     <x:Double x:Key="DropShadowBlurRadius">8</x:Double>
@@ -21,6 +22,7 @@
                 <ResourceDictionary x:Key="Default">
                     <SolidColorBrush x:Key="PrimaryTextColor" Color="White"/>
                     <AcrylicBrush x:Key="BackdropAcrylicBrush" BackgroundSource="Backdrop" TintColor="#88484848" TintOpacity="0.9" FallbackColor="#FF484848"/>
+                    <AcrylicBrush x:Key="KeyboardShortcutAcrylicBrush" BackgroundSource="Backdrop" TintColor="Black" TintOpacity="0.9" FallbackColor="Black"/>
                     <SolidColorBrush x:Key="ItemBackgroundColor" Color="#FFFFFFFF"/>
                     <x:Double x:Key="DropShadowBlurRadius">8</x:Double>
                     <Color x:Key="DropShadowColor">#FF979797</Color>
@@ -29,7 +31,7 @@
 
             <Style x:Key="IconOnlyButton" TargetType="Button">
                 <Setter Property="Background" Value="{ThemeResource ButtonRevealBackground}" />
-                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextColor}" />
                 <!--<Setter Property="BorderBrush" Value="0" />-->
                 <Setter Property="BorderThickness" Value="{ThemeResource ButtonRevealBorderThemeThickness}" />
                 <Setter Property="Padding" Value="{ThemeResource ButtonPadding}" />
@@ -91,7 +93,7 @@
                                     </VisualStateGroup>
 
                                 </VisualStateManager.VisualStateGroups>
-                                <ContentPresenter x:Name="ContentPresenter" Foreground="White"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="{TemplateBinding CornerRadius}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AutomationProperties.AccessibilityView="Raw" />
+                                <ContentPresenter x:Name="ContentPresenter" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="{TemplateBinding CornerRadius}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AutomationProperties.AccessibilityView="Raw" />
 
                             </Grid>
 

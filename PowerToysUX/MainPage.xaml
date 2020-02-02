@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:PowerToysUX.Controls"
-    mc:Ignorable="d"  RequestedTheme="Dark"
+    mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
@@ -26,8 +26,22 @@
             <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal" >
                 <Button Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
                     <Button.Content>
-                        <FontIcon FontSize="20" FontWeight="Light" Glyph="&#xE721;" />
+                        <Grid Width="16" Height="16" Opacity="0.9" RowSpacing="2" ColumnSpacing="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Fill="{ThemeResource PrimaryTextColor}"/>
+                            <Rectangle Fill="{ThemeResource PrimaryTextColor}" Grid.Column="1"/>
+                            <Rectangle Fill="{ThemeResource PrimaryTextColor}" Grid.Row="1"/>
+                            <Rectangle Fill="{ThemeResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
                     </Button.Content>
+           
                 </Button>
                 <Button Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
                     <Button.Content>
@@ -39,33 +53,23 @@
                         <FontIcon FontSize="20" FontWeight="Light" Glyph="&#xE7C4;" />
                     </Button.Content>
                 </Button>
-                <Button Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
+                <Button x:Name="TeamsAppBtn" Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
                     <Button.Content>
                         <Image Source="/Assets/Images/Teams.png" Margin="8"/>
                     </Button.Content>
-                    <Button.Flyout>
-                        
-                  
-                    <Flyout>
-                            <Flyout.FlyoutPresenterStyle>
-                                <Style TargetType="FlyoutPresenter">
-                                    <Setter Property="Background" Value="Red"/>
-                                </Style>
-                            </Flyout.FlyoutPresenterStyle>
-                            <TextBlock Text="3" />
-                         
-                        </Flyout>
-                    </Button.Flyout>
+                   
                 </Button>
-                <Button Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
+                <Button x:Name="WeatherAppBtn" Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
                     <Button.Content>
                         <Image Source="/Assets/Images/Weather.png" Margin="8,8,8,8"/>
                     </Button.Content>
+                  
                 </Button>
-                <Button Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
+                <Button x:Name="WordAppBtn" Width="48" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
                     <Button.Content>
                         <Image Source="/Assets/Images/Word.png" Margin="8,8,8,8"/>
                     </Button.Content>
+                   
                 </Button>
 
               
@@ -84,7 +88,36 @@
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>-->
 
-                            <MenuFlyoutItem x:Name="PowerLauncherMenuItem" Text="Power Launcher" Click="PowerLauncherMenuItem_Click">
+                        
+
+                            <MenuFlyoutItem Text="Color Meter" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="PowerLauncherMenuItem_Click">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xEF3C;"/>
+                                </MenuFlyoutItem.Icon>
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="C" Modifiers="Windows"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutItem Text="Tapeline" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="PowerLauncherMenuItem_Click">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xECC6;"/>
+                                </MenuFlyoutItem.Icon>
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="T" Modifiers="Windows"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutItem Text="GIF Recorder" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="PowerLauncherMenuItem_Click">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xF4A9;"/>
+                                </MenuFlyoutItem.Icon>
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="G" Modifiers="Windows"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+                            </MenuFlyoutItem>
+
+                            <MenuFlyoutItem x:Name="PowerLauncherMenuItem" Text="Power Launcher" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="PowerLauncherMenuItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE8A7;"/>
                                 </MenuFlyoutItem.Icon>
@@ -92,7 +125,7 @@
                                     <KeyboardAccelerator Key="L" Modifiers="Windows"/>
                                 </MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem x:Name="ShortcutsMenuFlyoutItem" Text="Shortcuts Guide" Click="ShortcutsMenuFlyoutItem_Click">
+                            <MenuFlyoutItem x:Name="ShortcutsMenuFlyoutItem" Text="Shortcuts Guide" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="ShortcutsMenuFlyoutItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xEDA7;"/>
                                 </MenuFlyoutItem.Icon>
@@ -109,16 +142,13 @@
                                 </MenuFlyoutItem.KeyboardAccelerators>
 
                             </MenuFlyoutItem>-->
-                            <MenuFlyoutItem x:Name="SettingsMenuFlyoutItem" Text="Settings" Click="SettingsMenuFlyoutItem_Click">
+                            <MenuFlyoutSeparator/>
+                            <MenuFlyoutItem x:Name="SettingsMenuFlyoutItem" Text="Settings" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="SettingsMenuFlyoutItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE713;"/>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutSeparator/>
-                            <MenuFlyoutItem Text="About"/>
-
-
-                            <MenuFlyoutItem Text="Exit"/>
+                            <MenuFlyoutItem Text="Exit" Style="{ThemeResource MenuFlyoutItemRevealStyle}" />
 
                         </MenuFlyout>
                     </Button.Flyout>
@@ -136,15 +166,13 @@
                 <TextBlock x:Name="TimeTextBlock" Text="08:42 PM" Foreground="{ThemeResource PrimaryTextColor}" VerticalAlignment="Center" Margin="12" FontWeight="Medium"/>
             </StackPanel>
 
-
-
         </Grid>
-        <Grid x:Name="OverlayGrid" Background="Black" Opacity="0.7" Visibility="Collapsed" PointerPressed="OverlayGrid_PointerPressed" >
+        <Grid x:Name="OverlayGrid" Opacity="0.75" Background="Black" Visibility="Collapsed" PointerPressed="OverlayGrid_PointerPressed" >
             <animations:Implicit.ShowAnimations>
-                <animations:OpacityAnimation Duration="0:0:0.350" From="0" To="0.6"/>
+                <animations:OpacityAnimation Duration="0:0:0.350" From="0" To="0.75"/>
             </animations:Implicit.ShowAnimations>
             <animations:Implicit.HideAnimations>
-                <animations:OpacityAnimation Duration="0:0:0.350" To="0" From="0.6"/>
+                <animations:OpacityAnimation Duration="0:0:0.350" To="0" From="0.75"/>
             </animations:Implicit.HideAnimations>
         </Grid>
         <controls:Shortcuts x:Name="Shortcuts" Visibility="Collapsed" />

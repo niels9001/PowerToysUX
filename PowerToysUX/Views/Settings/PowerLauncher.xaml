@@ -11,7 +11,7 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel Orientation="Vertical" Margin="14,0,14,0" Spacing="14">
+            <StackPanel Orientation="Vertical" Margin="14,0,14,48" Spacing="14">
                 <TextBlock Text="A quick launcher that has additional capabilities without sacrificing performance" Style="{StaticResource BodyTextBlockStyle}"/>
                 <HyperlinkButton x:Name="OverviewBtn" Content="Overview" Margin="0,-14,0,0" />
                 <TextBlock Text="Search &amp; results" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
@@ -28,7 +28,7 @@
                 </ComboBox>
                 <muxc:NumberBox Value="4" SpinButtonPlacementMode="Compact" Header="Maximum numbers of results"  HorizontalAlignment="Left" MinWidth="240"/>
 
-
+                
                 <TextBlock Text="Default apps" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
                 <ComboBox Header="Shell" SelectedIndex="0" MinWidth="240">
                     <ComboBoxItem>PowerShell</ComboBoxItem>

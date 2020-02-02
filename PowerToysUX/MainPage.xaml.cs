@@ -120,7 +120,7 @@ namespace PowerToysUX
 
         private void HidePowerBar()
         {
-            PowerBar.Margin = new Thickness(0, 0, 0, 0);
+            PowerBar.Margin = new Thickness(0, -56, 0, 0);
         }
 
         private void PowerBar_PointerEntered(object sender, PointerRoutedEventArgs e)

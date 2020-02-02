@@ -40,7 +40,6 @@ namespace PowerToysUX
                 case "PowerRename": contentFrame.Navigate(typeof(PowerRename)); NavView.Header = "Power Rename"; break;
                 case "Shortcuts": contentFrame.Navigate(typeof(Shortcuts)); NavView.Header = "Shortcuts Guide"; break;
                 case "PowerLauncher": contentFrame.Navigate(typeof(PowerLauncher)); NavView.Header = "Power Launcher"; break;
-
             }
         }
     }
