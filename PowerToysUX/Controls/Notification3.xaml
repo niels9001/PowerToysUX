@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="PowerToysUX.Controls.MuteNotification3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PowerToysUX.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+       xmlns:ToolkitBehaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Behaviors="using:PowerToysUX.Behaviours"
+     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <ThemeShadow x:Name="ShellBarShadow"/>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="ShadowReceiverGrid"/>
+        <Grid CornerRadius="4" Background="{ThemeResource BackdropAcrylicBrush}" Translation="0,0,16" Shadow="{StaticResource ShellBarShadow}" Margin="12" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="32"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Spacing="1">
+                <ToggleButton x:Name="MicButton" Background="Transparent" Padding="0" CornerRadius="4,0,0,4" Grid.Column="1" Width="120" Height="72" BorderThickness="1" Style="{ThemeResource ToggleButtonRevealStyle}" Checked="MicButton_Checked" Unchecked="MicButton_Unchecked" >
+                    <ToolTipService.ToolTip>
+                        <TextBlock Text="Ctrl + N"/>
+                    </ToolTipService.ToolTip>
+                    <ToggleButton.Content>
+                        <Grid RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <FontIcon x:Name="MicIcon" Foreground="{ThemeResource PrimaryTextColor}" FontFamily="Segoe MDL2 Assets" FontSize="22" Glyph="&#xF781;"/>
+                            <TextBlock x:Name="MicText" Foreground="{ThemeResource PrimaryTextColor}" Text="Audio off" FontSize="12" Grid.Row="1" />
+                        </Grid>
+                       
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="CameraButton" Checked="CameraButton_Checked" Padding="0" Width="120" Height="72" Unchecked="CameraButton_Unchecked" Background="Transparent" Grid.Column="1" CornerRadius="0,4,4,0" BorderThickness="1" Style="{ThemeResource ToggleButtonRevealStyle}" >
+                    <ToolTipService.ToolTip>
+                        <TextBlock Text="Ctrl + M"/>
+                    </ToolTipService.ToolTip>
+                    <ToggleButton.Content>
+                        <Grid RowSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <FontIcon x:Name="CameraIcon" Foreground="{ThemeResource PrimaryTextColor}" FontFamily="{StaticResource Fabric}" FontSize="22" Glyph="&#xE43C;"/>
+                            <TextBlock x:Name="CameraText" Foreground="{ThemeResource PrimaryTextColor}" Text="Video off" FontSize="12" Grid.Row="1" />
+                        </Grid>
+
+                    </ToggleButton.Content>
+                </ToggleButton>
+            </StackPanel>
+            <Grid Grid.Column="1">
+                <Button Background="Transparent" Margin="0,0,0,8" Style="{StaticResource ButtonRevealStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="14" Glyph="&#xE713;"/>
+                    </Button.Content>
+                </Button>
+                <Button Background="Transparent" Style="{StaticResource ButtonRevealStyle}" Margin="0,8,0,0"  HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="14" Glyph="&#xE840;"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

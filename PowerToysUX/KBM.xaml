@@ -1,0 +1,496 @@
+﻿<Page
+    x:Class="PowerToysUX.KBM"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PowerToysUX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark"
+        xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="AddItemAppBarButtonStyle" TargetType="AppBarButton">
+            <Setter Property="Background" Value="{ThemeResource AppBarButtonBackground}"/>
+            <Setter Property="Foreground" Value="{ThemeResource AppBarButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource AppBarButtonBorderBrush}"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="MaxWidth" Value="500"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="AllowFocusOnInteraction" Value="False"/>
+            <Setter Property="KeyboardAcceleratorPlacementMode" Value="Hidden"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="AppBarButton">
+                        <Grid x:Name="Root" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding CornerRadius}" MinWidth="{TemplateBinding MinWidth}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemListLowColor}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentRoot"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Root" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemListMediumColor}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentRoot"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Target="Root.Background" Value="{ThemeResource AppBarButtonBackgroundDisabled}"/>
+                                            <Setter Target="AppBarButtonInnerBorder.BorderBrush" Value="{ThemeResource AppBarButtonBorderBrushDisabled}"/>
+                                            <Setter Target="Content.Foreground" Value="{ThemeResource AppBarButtonForegroundDisabled}"/>
+                                            <Setter Target="TextLabel.Foreground" Value="{ThemeResource AppBarButtonForegroundDisabled}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+
+
+                            <Grid x:Name="ContentRoot">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="320"/>
+                                </Grid.ColumnDefinitions>
+                                <Border x:Name="AppBarButtonInnerBorder" Margin="10" CornerRadius="4" Height="40" Width="40" Background="{ThemeResource ButtonBackground}">
+                                    <ContentPresenter x:Name="Content" Content="{TemplateBinding Icon}" Foreground="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5">
+                                        <ContentPresenter.RenderTransform>
+                                            <CompositeTransform ScaleX="0.8" ScaleY="0.8"/>
+                                        </ContentPresenter.RenderTransform>
+                                    </ContentPresenter>
+                                </Border>
+
+                                <TextBlock x:Name="TextLabel" Grid.Column="1" AutomationProperties.AccessibilityView="Raw" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" FontSize="14" Text="{TemplateBinding Label}"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RadioButtonStyle1" TargetType="RadioButton">
+            <Setter Property="Background" Value="{ThemeResource RadioButtonBackground}"/>
+            <Setter Property="Foreground" Value="{ThemeResource RadioButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource RadioButtonBorderBrush}"/>
+            <Setter Property="Padding" Value="8,6,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="FocusVisualMargin" Value="-7,-3,-7,-3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonForegroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBackgroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBorderBrushPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokePointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HightLightBrush" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokePointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonForegroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBackgroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBorderBrushPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokePressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HightLightBrush" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokePressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokeDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HightLightBrush" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStrokeDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            
+
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="Opacity" To="1"/>
+                                            <DoubleAnimation Duration="0" Storyboard.TargetName="HightLightBrush" Storyboard.TargetProperty="Opacity" To="0.4"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckOuterEllipse" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStroke}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Header" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource RadioButtonOuterEllipseCheckedStroke}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <TextBlock x:Name="Header" FontWeight="Bold" Text="{TemplateBinding Tag}" />
+                            <Grid Grid.Row="1" Margin="0,12,0,0" x:Name="CheckOuterEllipse" Height="64" BorderBrush="LightGray" BorderThickness="1" CornerRadius="4">
+                                <Border x:Name="HightLightBrush" Opacity="0" Background="{ThemeResource RadioButtonOuterEllipseCheckedStroke}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" Grid.Column="1" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" TextWrapping="Wrap" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="880" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ShortcutGrid.(Grid.Column)" Value="1" />
+                        <Setter Target="ShortcutGrid.(Grid.Row)" Value="1" />
+                        <Setter Target="ShortcutGrid.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="SingleKeyGrid.(Grid.ColumnSpan)" Value="1" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="SmallLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="480" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ShortcutGrid.(Grid.Column)" Value="0" />
+                        <Setter Target="ShortcutGrid.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="SingleKeyGrid.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="ShortcutGrid.(Grid.Row)" Value="2" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="78"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Background="{ThemeResource HostBackdropAcrylicBrush}">
+            <TextBlock Text="Keyboard Manager"
+                       FontWeight="Bold"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Margin="24,24,0,0" />
+        </Grid>
+
+        <ScrollViewer Grid.Row="1">
+            <Grid ColumnSpacing="48" RowSpacing="48" Margin="0,0,0,64">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="Profilegrid" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="68"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Keyboard profile"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   Margin="24,24,0,0" />
+
+                <TextBlock Text="Select the profile you want to currently edit."
+                   Grid.Row="1"
+                   Margin="24,0,0,0"/>
+                    <ComboBox Grid.Row="2" Width="320"  Margin="24,0,0,0">
+                        <ComboBoxItem Content="Profile 1"/>
+                        <ComboBoxItem Content="Profile 2" />
+                    </ComboBox>
+
+                    <AppBarButton Grid.Row="3" Margin="14,0,0,0" Style="{StaticResource AddItemAppBarButtonStyle}" Icon="Add" HorizontalAlignment="Left" Label="Add new profile" Height="60"/>
+
+                </Grid>
+
+                <Grid x:Name="SingleKeyGrid" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="68"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Single key remappings"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   Margin="24,24,0,0" />
+
+                    <TextBlock Text="You can remap single keys to new ones."
+                   Grid.Row="1"
+                   Margin="24,0,0,0"/>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="2" Margin="14,24,14,0">
+                        <AppBarButton Click="AppBarButton_Click" Style="{StaticResource AddItemAppBarButtonStyle}" Icon="Add" HorizontalAlignment="Left" Label="Add key" Height="60"/>
+
+                        <ListView x:Name="SingleKeysListView" Margin="0,12,0,0" BorderThickness="1" CornerRadius="4" SelectionChanged="SingleKeysListView_SelectionChanged" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" SelectionMode="Single" IsItemClickEnabled="True" ItemsSource="{x:Bind RemappedKeys}"  extensions:ListViewExtensions.AlternateColor="{ThemeResource SystemControlBackgroundListLowBrush}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local:RemappedKey">
+                                    <Grid Height="64" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="164"/>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="164"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Content="{x:Bind Original}" Style="{StaticResource ButtonRevealStyle}" Padding="15,0,15,0" Margin="-2,0,0,0" Height="40">
+                                            <Button.Flyout>
+                                                <MenuFlyout>
+                                                    <MenuFlyoutItem Text="A" Click="SingleFlyoutItem_Click"/>
+                                                    <MenuFlyoutItem Text="Ctrl" Click="SingleFlyoutItem_Click"/>
+                                                    <MenuFlyoutItem Text="Shift" Click="SingleFlyoutItem_Click"/>
+                                                    <MenuFlyoutItem Text="Enter" Click="SingleFlyoutItem_Click"/>
+                                                    <MenuFlyoutItem Text="B" Click="SingleFlyoutItem_Click"/>
+                                                </MenuFlyout>
+                                            </Button.Flyout>
+                                        </Button>
+                                        <FontIcon Glyph="&#xE72A;" Grid.Column="1" FontSize="14" Opacity="0.4" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                                        <Button Grid.Column="2" HorizontalAlignment="Right"  Style="{StaticResource AccentButtonStyle}" Content="{x:Bind New}" Padding="15,0,15,0" Height="40">
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                </Grid>
+
+
+                <Grid x:Name="ShortcutGrid" Grid.Row="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="68"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                                Text="Shortcut remappings"
+                                Style="{ThemeResource SubtitleTextBlockStyle}"
+                                Margin="24,24,0,0" />
+                    <TextBlock
+                                Text="You can remap a shortcut to new ones."
+                               Grid.Row="1" Margin="24,0,0,0"
+                               />
+                    <StackPanel Orientation="Vertical" Grid.Row="2" Margin="14,24,14,0">
+                        <AppBarButton Style="{StaticResource AddItemAppBarButtonStyle}" Icon="Add" HorizontalAlignment="Left" Label="Add shortcut" Height="60"/>
+
+                        <ListView x:Name="ShortcutKeysListView" Margin="0,12,0,0" CornerRadius="4" SelectionMode="Single" SelectionChanged="ShortcutKeysListView_SelectionChanged" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" IsItemClickEnabled="True" ItemsSource="{x:Bind RemappedShortcuts}" extensions:ListViewExtensions.AlternateColor="{ThemeResource SystemControlBackgroundListLowBrush}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local:RemappedShortcut">
+                                    <Grid Height="64">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="64" />
+                                            <ColumnDefinition Width="360"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ItemsControl ItemsSource="{x:Bind Original}" Margin="0,0,0,0" >
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal" Spacing="8"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Button Style="{StaticResource ButtonRevealStyle}" Content="{Binding}" Padding="15,0,15,0" Height="40">
+
+                                                    </Button>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                        <FontIcon Glyph="&#xE72A;" Grid.Column="1" FontSize="14" Opacity="0.4" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                                        <ItemsControl ItemsSource="{x:Bind New}" Grid.Column="2">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal" Spacing="8"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Button Style="{StaticResource AccentButtonStyle}" Content="{Binding}" Padding="15,0,15,0" Height="40">
+                                                    </Button>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+        <ContentDialog x:Name="SingleKeyDialog" PrimaryButtonClick="SingleKeyDialog_PrimaryButtonClick" Title="Single key" PrimaryButtonText="Save" SecondaryButtonText="Cancel" DefaultButton="Primary">
+            <Grid RowSpacing="12" Width="480">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="64"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="64"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Select a key or use any of the keys on your keyboard to remap it" Grid.ColumnSpan="3"/>
+                <HyperlinkButton Grid.ColumnSpan="3">
+                    <TextBlock Text="Key not working? Learn more about it here." Margin="0,12,0,0"/>
+                </HyperlinkButton> 
+                <TextBlock Text="Original key" FontWeight="Bold" Grid.Row="2"/>
+                <FontIcon Glyph="&#xE72A;" Grid.Column="1"  Grid.Row="3" FontSize="14" Opacity="0.4" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Text="New key" HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="2" Grid.Row="2"/>
+
+
+
+                <Button x:Name="SingleOldKeyBtn" Style="{StaticResource ButtonRevealStyle}" Content="+" FontSize="14" Grid.Column="0" Grid.Row="2" Padding="15,0,15,0" Height="40">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="A" Click="SingleKeyOldMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="Ctrl" Click="SingleKeyOldMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="Shift" Click="SingleKeyOldMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="Enter" Click="SingleKeyOldMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="B" Click="SingleKeyOldMenuFlyoutItem_Click"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+
+                <Button x:Name="SingleNewKeyBtn"  HorizontalAlignment="Right"  Style="{StaticResource AccentButtonStyle}" Content="+" Grid.Column="2" Grid.Row="2" Padding="15,0,15,0" Height="40">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="A" Click="SingleKeyNewMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="Ctrl" Click="SingleKeyNewMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="Shift" Click="SingleKeyNewMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="Enter" Click="SingleKeyNewMenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem Text="B" Click="SingleKeyNewMenuFlyoutItem_Click"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+
+            </Grid>
+
+        </ContentDialog>
+
+
+
+
+        <ContentDialog x:Name="ShortcutDialog" Width="640" MinWidth="640" MaxWidth="640" FullSizeDesired="True" Title="Shortcut" PrimaryButtonText="Save" SecondaryButtonText="Cancel" DefaultButton="Primary">
+            <Grid RowSpacing="12" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="64"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Select a key or use any of the keys on your keyboard to remap it" Grid.ColumnSpan="3"/>
+                <TextBlock Text="Original key" FontWeight="Bold" Grid.Row="1"/>
+                <FontIcon Glyph="&#xE72A;" Grid.Column="1"  Grid.Row="2" FontSize="14" Opacity="0.4" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                <TextBlock Text="New key" HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="2" Grid.Row="1"/>
+
+                <RadioButton x:Name="OriginalKeyRadioButton" Tag="Original key" Grid.Row="2"  GroupName="S" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Style="{StaticResource RadioButtonStyle1}">
+                    <RadioButton.Content>
+                        <ItemsControl x:Name="OriginalItemsControl" Margin="0,0,0,0" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="8"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource ButtonRevealStyle}" Content="{Binding}" Padding="15,0,15,0" Height="40">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton x:Name="NewKeyRadioButton" Tag="New key" HorizontalAlignment="Stretch"  GroupName="S" VerticalAlignment="Bottom" Style="{StaticResource RadioButtonStyle1}" Grid.Column="2" Grid.Row="2" >
+                    <RadioButton.Content>
+                        <ItemsControl x:Name="NewItemsControl" Margin="0,0,0,0" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="8"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource AccentButtonStyle}" Content="{Binding}" Padding="15,0,15,0" Height="40">
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </RadioButton.Content>
+                </RadioButton>
+            </Grid>
+        </ContentDialog>
+    </Grid>
+</Page>

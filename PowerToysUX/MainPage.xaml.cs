@@ -33,7 +33,16 @@ namespace PowerToysUX
             this.InitializeComponent();
             Window.Current.SetTitleBar(Tiitlebar);
             //ShellBarShadow.Receivers.Add(ShadowReceiverGrid);
+            OpenKBM();
+
+
         }
+
+        private async void OpenKBM()
+        {
+            await OpenPageAsWindowAsync(typeof(KBM));
+        }
+
 
         private async void LaunchSettings()
         {

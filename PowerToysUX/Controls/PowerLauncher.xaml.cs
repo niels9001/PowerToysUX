@@ -61,6 +61,11 @@ namespace PowerToysUX.Controls
                 sender.ItemsSource = Suggestion;
             }
         }
+
+        private void SearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            var lala = args.SelectedItem as SearchApp;
+        }
     }
 
 

@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="PowerToysUX.Views.Settings.KeyboardManager"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PowerToysUX.Views.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" Margin="14,0,14,48" Spacing="14">
+                <TextBlock Text="A quick launcher that has additional capabilities without sacrificing performance" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Text="Keyboard Manager" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,20,0,8"/>
+                <Button x:Name="KBMButton" Style="{StaticResource AccentButtonStyle}">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <FontIcon Glyph="&#xEDA7;"/>
+                            <TextBlock Text="Launch Keyboard Manager" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

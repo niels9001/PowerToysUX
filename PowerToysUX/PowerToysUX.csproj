@@ -121,6 +121,15 @@
     </Compile>
     <Compile Include="Behaviors\CloseFlyoutAction.cs" />
     <Compile Include="Behaviors\OpenFlyoutAction.cs" />
+    <Compile Include="Controls\Notification3.xaml.cs">
+      <DependentUpon>Notification3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Notification2.xaml.cs">
+      <DependentUpon>Notification2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PowerBar.xaml.cs">
       <DependentUpon>PowerBar.xaml</DependentUpon>
     </Compile>
@@ -129,6 +138,9 @@
     </Compile>
     <Compile Include="Controls\Shortcuts.xaml.cs">
       <DependentUpon>Shortcuts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KBM.xaml.cs">
+      <DependentUpon>KBM.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -139,6 +151,9 @@
     </Compile>
     <Compile Include="Views\Settings\General.xaml.cs">
       <DependentUpon>General.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\KeyboardManager.xaml.cs">
+      <DependentUpon>KeyboardManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\PowerLauncher.xaml.cs">
       <DependentUpon>PowerLauncher.xaml</DependentUpon>
@@ -158,6 +173,7 @@
   <ItemGroup>
     <Content Include="Assets\Images\Calendar.png" />
     <Content Include="Assets\Images\Camera.png" />
+    <Content Include="Assets\Images\Wallpaper.jpg" />
     <Content Include="Assets\Images\Excel.png" />
     <Content Include="Assets\Images\Feedback.png" />
     <Content Include="Assets\Images\FileExplorer.png" />
@@ -176,7 +192,6 @@
     <Content Include="Assets\Images\Skype.png" />
     <Content Include="Assets\Images\Solitaire.png" />
     <Content Include="Assets\Images\Teams.png" />
-    <Content Include="Assets\Images\Wallpaper.jpg" />
     <Content Include="Assets\Images\Weather.png" />
     <Content Include="Assets\Images\Whiteboard.png" />
     <Content Include="Assets\Images\Word.png" />
@@ -239,6 +254,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Notification3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Notification2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Notification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\PowerBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -248,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Shortcuts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KBM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,6 +293,10 @@
     <Page Include="Views\Settings\General.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\KeyboardManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Settings\PowerLauncher.xaml">
       <SubType>Designer</SubType>
@@ -280,6 +315,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>6.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
       <Version>6.0.0</Version>
     </PackageReference>
@@ -287,10 +325,14 @@
       <Version>6.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.3.191211002</Version>
+      <Version>2.4.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\fabric.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

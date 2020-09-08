@@ -88,6 +88,18 @@
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>-->
 
+                            <MenuFlyoutSubItem Text="FancyZones">
+                                <MenuFlyoutSubItem.Icon>
+                                    <FontIcon Glyph="&#xED35;"/>
+                                </MenuFlyoutSubItem.Icon>
+                                <ToggleMenuFlyoutItem Text="Focus" />
+                                <ToggleMenuFlyoutItem Text="Columns" IsChecked="True" />
+                                <ToggleMenuFlyoutItem Text="Rows" />
+                                <ToggleMenuFlyoutItem Text="Grid" />
+                                <ToggleMenuFlyoutItem Text="Priority grid" />
+                                <ToggleMenuFlyoutItem Text="Custom layout (1)" />
+                                <ToggleMenuFlyoutItem Text="Custom layout (2)" />
+                            </MenuFlyoutSubItem>
                         
 
                             <MenuFlyoutItem Text="Color Meter" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="PowerLauncherMenuItem_Click">
@@ -192,6 +204,14 @@
                 <animations:OpacityAnimation Duration="0:0:0.350" To="0" From="1.0"/>
             </animations:Implicit.HideAnimations>
         </controls:PowerLaunch>
+
+       
+
+
+        <controls:MuteNotification HorizontalAlignment="Left" Margin="64" VerticalAlignment="Bottom"/>
+
+
+
         <Rectangle Width="1" Height="1" Fill="Red" x:Name="Tiitlebar" HorizontalAlignment="Left" VerticalAlignment="Top" />
     </Grid>
 </Page>
