@@ -139,6 +139,9 @@
     <Compile Include="Controls\Shortcuts.xaml.cs">
       <DependentUpon>Shortcuts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Systray.xaml.cs">
+      <DependentUpon>Systray.xaml</DependentUpon>
+    </Compile>
     <Compile Include="KBM.xaml.cs">
       <DependentUpon>KBM.xaml</DependentUpon>
     </Compile>
@@ -173,7 +176,7 @@
   <ItemGroup>
     <Content Include="Assets\Images\Calendar.png" />
     <Content Include="Assets\Images\Camera.png" />
-    <Content Include="Assets\Images\Wallpaper.jpg" />
+    <Content Include="Assets\Images\PowerToysIcon.png" />
     <Content Include="Assets\Images\Excel.png" />
     <Content Include="Assets\Images\Feedback.png" />
     <Content Include="Assets\Images\FileExplorer.png" />
@@ -186,12 +189,12 @@
     <Content Include="Assets\Images\Outlook.png" />
     <Content Include="Assets\Images\Photos.png" />
     <Content Include="Assets\Images\PowerPoint.png" />
-    <Content Include="Assets\Images\PowerToysIcon.png" />
     <Content Include="Assets\Images\ScreenSketch.png" />
     <Content Include="Assets\Images\SharePoint.png" />
     <Content Include="Assets\Images\Skype.png" />
     <Content Include="Assets\Images\Solitaire.png" />
     <Content Include="Assets\Images\Teams.png" />
+    <Content Include="Assets\Images\Wallpaper.jpg" />
     <Content Include="Assets\Images\Weather.png" />
     <Content Include="Assets\Images\Whiteboard.png" />
     <Content Include="Assets\Images\Word.png" />
@@ -275,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Shortcuts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Systray.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

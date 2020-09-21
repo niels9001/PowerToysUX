@@ -3,12 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PowerToysUX"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:PowerToysUX.Controls"
+    xmlns:controls="using:PowerToysUX.Controls" xmlns:controls1="using:App4.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
 
     <Grid>
         <Grid.Resources>
@@ -81,12 +83,15 @@
                         <Image Source="/Assets/Images/PowerToysIcon.png"  />
                     </Button.Content>
                     <Button.Flyout>
-                        <MenuFlyout>
-                            <!--<MenuFlyoutItem Text="PowerToys" Click="MenuFlyoutItem_Click">
+                        <Flyout>
+                            <controls1:Systray Margin="-12" CornerRadius="4" />
+                        </Flyout>
+                        <!--<MenuFlyout>
+                            --><!--<MenuFlyoutItem Text="PowerToys" Click="MenuFlyoutItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <BitmapIcon UriSource="/Assets/Images/PowerToysIcon.png"  />
                                 </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>-->
+                            </MenuFlyoutItem>--><!--
 
                             <MenuFlyoutSubItem Text="FancyZones">
                                 <MenuFlyoutSubItem.Icon>
@@ -145,7 +150,7 @@
                                     <KeyboardAccelerator Key="S" Modifiers="Windows"/>
                                 </MenuFlyoutItem.KeyboardAccelerators>
                             </MenuFlyoutItem>
-                            <!--<MenuFlyoutItem Text="FancyZones">
+                            --><!--<MenuFlyoutItem Text="FancyZones">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xED35;"/>
                                 </MenuFlyoutItem.Icon>
@@ -153,7 +158,7 @@
                                     <KeyboardAccelerator Key="F" Modifiers="Windows"/>
                                 </MenuFlyoutItem.KeyboardAccelerators>
 
-                            </MenuFlyoutItem>-->
+                            </MenuFlyoutItem>--><!--
                             <MenuFlyoutSeparator/>
                             <MenuFlyoutItem x:Name="SettingsMenuFlyoutItem" Text="Settings" Style="{ThemeResource MenuFlyoutItemRevealStyle}" Click="SettingsMenuFlyoutItem_Click">
                                 <MenuFlyoutItem.Icon>
@@ -162,7 +167,7 @@
                             </MenuFlyoutItem>
                             <MenuFlyoutItem Text="Exit" Style="{ThemeResource MenuFlyoutItemRevealStyle}" />
 
-                        </MenuFlyout>
+                        </MenuFlyout>-->
                     </Button.Flyout>
                 </Button>
                 <Button Width="32" x:Name="AudioButton" Padding="0" VerticalAlignment="Stretch" Background="Transparent" Foreground="{ThemeResource PrimaryTextColor}" Style="{StaticResource IconOnlyButton}">
@@ -205,13 +210,7 @@
             </animations:Implicit.HideAnimations>
         </controls:PowerLaunch>
 
-       
-
-
-        <controls:MuteNotification HorizontalAlignment="Left" Margin="64" VerticalAlignment="Bottom"/>
-
-
-
+        <controls:MuteNotification Visibility="Collapsed" HorizontalAlignment="Left" Margin="64" VerticalAlignment="Bottom"/>
         <Rectangle Width="1" Height="1" Fill="Red" x:Name="Tiitlebar" HorizontalAlignment="Left" VerticalAlignment="Top" />
     </Grid>
 </Page>
